@@ -1,0 +1,66 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Resolve version from tag
+        id: version
+        run: |
+          TAG="${GITHUB_REF_NAME}"
+          VERSION="${TAG#v}"
+          BUILD="${{ github.run_number }}"
+          echo "tag=${TAG}" >> "$GITHUB_OUTPUT"
+          echo "version=${VERSION}" >> "$GITHUB_OUTPUT"
+          echo "build=${BUILD}" >> "$GITHUB_OUTPUT"
+          echo "asset=TapBeat-${VERSION}-macos.zip" >> "$GITHUB_OUTPUT"
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode.app
+
+      - name: Build Release (universal)
+        run: |
+          xcodebuild \
+            -project TapBeat.xcodeproj \
+            -scheme TapBeat \
+            -configuration Release \
+            -derivedDataPath build \
+            ARCHS="arm64 x86_64" \
+            ONLY_ACTIVE_ARCH=NO \
+            MARKETING_VERSION="${{ steps.version.outputs.version }}" \
+            CURRENT_PROJECT_VERSION="${{ steps.version.outputs.build }}" \
+            CODE_SIGN_IDENTITY="-" \
+            CODE_SIGNING_ALLOWED=YES \
+            CODE_SIGNING_REQUIRED=NO
+
+      - name: Package zip
+        run: |
+          APP="build/Build/Products/Release/TapBeat.app"
+          test -d "$APP"
+          ditto -c -k --keepParent "$APP" "${{ steps.version.outputs.asset }}"
+          shasum -a 256 "${{ steps.version.outputs.asset }}" | tee "${{ steps.version.outputs.asset }}.sha256"
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.version.outputs.tag }}
+          name: TapBeat ${{ steps.version.outputs.version }}
+          generate_release_notes: true
+          files: |
+            ${{ steps.version.outputs.asset }}
+            ${{ steps.version.outputs.asset }}.sha256
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
