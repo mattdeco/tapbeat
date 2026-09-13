@@ -12,19 +12,21 @@ final class HapticsManager {
     static let shared = HapticsManager()
 
     #if os(iOS)
-    private let impactFeedback = UIImpactFeedbackGenerator(style: .medium)
+    private let impactFeedback = UIImpactFeedbackGenerator(style: .soft)
     private let selectionFeedback = UISelectionFeedbackGenerator()
     #endif
 
     private init() {
         #if os(iOS)
         impactFeedback.prepare()
+        selectionFeedback.prepare()
         #endif
     }
 
     func tapFeedback() {
         #if os(iOS)
-        impactFeedback.impactOccurred()
+        impactFeedback.impactOccurred(intensity: 0.75)
+        impactFeedback.prepare()
         #elseif os(watchOS)
         WKInterfaceDevice.current().play(.click)
         #elseif os(macOS)
@@ -35,6 +37,7 @@ final class HapticsManager {
     func resetFeedback() {
         #if os(iOS)
         selectionFeedback.selectionChanged()
+        selectionFeedback.prepare()
         #elseif os(watchOS)
         WKInterfaceDevice.current().play(.directionDown)
         #endif
