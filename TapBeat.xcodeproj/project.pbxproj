@@ -12,22 +12,61 @@
 		A10000000000000000000003 /* TapTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* TapTempo.swift */; };
 		A10000000000000000000004 /* MainWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000004 /* MainWindowController.swift */; };
 		A10000000000000000000005 /* LCDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* LCDView.swift */; };
+		A10000000000000000000007 /* TempoSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* TempoSession.swift */; };
+		A10000000000000000000008 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* HapticsManager.swift */; };
 		A10000000000000000000006 /* AppIcon.icns in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000006 /* AppIcon.icns */; };
+		A10000000000000000000010 /* TapBeatIOSApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000009 /* TapBeatIOSApp.swift */; };
+		A10000000000000000000011 /* TapBeatIOSContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000010 /* TapBeatIOSContentView.swift */; };
+		A10000000000000000000012 /* TapTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* TapTempo.swift */; };
+		A10000000000000000000013 /* TempoSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* TempoSession.swift */; };
+		A10000000000000000000014 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* HapticsManager.swift */; };
+		A10000000000000000000015 /* LCDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* LCDView.swift */; };
+		A10000000000000000000016 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000013 /* Assets.xcassets */; };
+		A10000000000000000000020 /* TapBeatWatchApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000011 /* TapBeatWatchApp.swift */; };
+		A10000000000000000000021 /* TapBeatWatchContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000012 /* TapBeatWatchContentView.swift */; };
+		A10000000000000000000022 /* TapTempo.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000003 /* TapTempo.swift */; };
+		A10000000000000000000023 /* TempoSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000007 /* TempoSession.swift */; };
+		A10000000000000000000024 /* HapticsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000008 /* HapticsManager.swift */; };
+		A10000000000000000000025 /* LCDView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000005 /* LCDView.swift */; };
+		A10000000000000000000026 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A20000000000000000000013 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A30000000000000000000001 /* TapBeat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TapBeat.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A30000000000000000000002 /* TapBeat-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TapBeat-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		A30000000000000000000003 /* TapBeat-Watch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TapBeat-Watch.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A20000000000000000000000 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A20000000000000000000001 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		A20000000000000000000002 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A20000000000000000000003 /* TapTempo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapTempo.swift; sourceTree = "<group>"; };
 		A20000000000000000000004 /* MainWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWindowController.swift; sourceTree = "<group>"; };
 		A20000000000000000000005 /* LCDView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LCDView.swift; sourceTree = "<group>"; };
+		A20000000000000000000007 /* TempoSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TempoSession.swift; sourceTree = "<group>"; };
+		A20000000000000000000008 /* HapticsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticsManager.swift; sourceTree = "<group>"; };
 		A20000000000000000000006 /* AppIcon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = AppIcon.icns; sourceTree = "<group>"; };
+		A20000000000000000000009 /* TapBeatIOSApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBeatIOSApp.swift; sourceTree = "<group>"; };
+		A20000000000000000000010 /* TapBeatIOSContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBeatIOSContentView.swift; sourceTree = "<group>"; };
+		A20000000000000000000011 /* TapBeatWatchApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBeatWatchApp.swift; sourceTree = "<group>"; };
+		A20000000000000000000012 /* TapBeatWatchContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapBeatWatchContentView.swift; sourceTree = "<group>"; };
+		A20000000000000000000013 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		A40000000000000000000001 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A40000000000000000000002 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A40000000000000000000003 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -50,9 +89,13 @@
 			children = (
 				A20000000000000000000000 /* Info.plist */,
 				A20000000000000000000006 /* AppIcon.icns */,
+				A20000000000000000000013 /* Assets.xcassets */,
 				A50000000000000000000003 /* App */,
 				A50000000000000000000004 /* Tempo */,
 				A50000000000000000000005 /* UI */,
+				A50000000000000000000007 /* Haptics */,
+				A50000000000000000000008 /* iOS */,
+				A50000000000000000000009 /* Watch */,
 			);
 			path = TapBeat;
 			sourceTree = "<group>";
@@ -70,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				A20000000000000000000003 /* TapTempo.swift */,
+				A20000000000000000000007 /* TempoSession.swift */,
 			);
 			path = Tempo;
 			sourceTree = "<group>";
@@ -83,10 +127,38 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		A50000000000000000000007 /* Haptics */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000008 /* HapticsManager.swift */,
+			);
+			path = Haptics;
+			sourceTree = "<group>";
+		};
+		A50000000000000000000008 /* iOS */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000009 /* TapBeatIOSApp.swift */,
+				A20000000000000000000010 /* TapBeatIOSContentView.swift */,
+			);
+			path = iOS;
+			sourceTree = "<group>";
+		};
+		A50000000000000000000009 /* Watch */ = {
+			isa = PBXGroup;
+			children = (
+				A20000000000000000000011 /* TapBeatWatchApp.swift */,
+				A20000000000000000000012 /* TapBeatWatchContentView.swift */,
+			);
+			path = Watch;
+			sourceTree = "<group>";
+		};
 		A50000000000000000000006 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				A30000000000000000000001 /* TapBeat.app */,
+				A30000000000000000000002 /* TapBeat-iOS.app */,
+				A30000000000000000000003 /* TapBeat-Watch.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -109,6 +181,40 @@
 			name = TapBeat;
 			productName = TapBeat;
 			productReference = A30000000000000000000001 /* TapBeat.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A60000000000000000000002 /* TapBeat-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A80000000000000000000003 /* Build configuration list for PBXNativeTarget "TapBeat-iOS" */;
+			buildPhases = (
+				A70000000000000000000003 /* Sources */,
+				A40000000000000000000002 /* Frameworks */,
+				A70000000000000000000004 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TapBeat-iOS";
+			productName = "TapBeat-iOS";
+			productReference = A30000000000000000000002 /* TapBeat-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+		A60000000000000000000003 /* TapBeat-Watch */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = A80000000000000000000004 /* Build configuration list for PBXNativeTarget "TapBeat-Watch" */;
+			buildPhases = (
+				A70000000000000000000005 /* Sources */,
+				A40000000000000000000003 /* Frameworks */,
+				A70000000000000000000006 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TapBeat-Watch";
+			productName = "TapBeat-Watch";
+			productReference = A30000000000000000000003 /* TapBeat-Watch.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -135,6 +241,8 @@
 			projectRoot = "";
 			targets = (
 				A60000000000000000000001 /* TapBeat */,
+				A60000000000000000000002 /* TapBeat-iOS */,
+				A60000000000000000000003 /* TapBeat-Watch */,
 			);
 		};
 /* End PBXProject section */
@@ -145,6 +253,21 @@
 			buildActionMask = 2147483647;
 			files = (
 				A10000000000000000000006 /* AppIcon.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70000000000000000000004 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000016 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70000000000000000000006 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -160,6 +283,34 @@
 				A10000000000000000000003 /* TapTempo.swift in Sources */,
 				A10000000000000000000004 /* MainWindowController.swift in Sources */,
 				A10000000000000000000005 /* LCDView.swift in Sources */,
+				A10000000000000000000007 /* TempoSession.swift in Sources */,
+				A10000000000000000000008 /* HapticsManager.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70000000000000000000003 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000010 /* TapBeatIOSApp.swift in Sources */,
+				A10000000000000000000011 /* TapBeatIOSContentView.swift in Sources */,
+				A10000000000000000000012 /* TapTempo.swift in Sources */,
+				A10000000000000000000013 /* TempoSession.swift in Sources */,
+				A10000000000000000000014 /* HapticsManager.swift in Sources */,
+				A10000000000000000000015 /* LCDView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A70000000000000000000005 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A10000000000000000000020 /* TapBeatWatchApp.swift in Sources */,
+				A10000000000000000000021 /* TapBeatWatchContentView.swift in Sources */,
+				A10000000000000000000022 /* TapTempo.swift in Sources */,
+				A10000000000000000000023 /* TempoSession.swift in Sources */,
+				A10000000000000000000024 /* HapticsManager.swift in Sources */,
+				A10000000000000000000025 /* LCDView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +393,116 @@
 			};
 			name = Release;
 		};
+		AA0000000000000000000005 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "TapBeat";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapbeat.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		AA0000000000000000000006 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "TapBeat";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.music";
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapbeat.ios;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		AA0000000000000000000007 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "TapBeat";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapbeat.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Debug;
+		};
+		AA0000000000000000000008 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "TapBeat";
+				INFOPLIST_KEY_WKRunsIndependentlyOfCompanionApp = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tapbeat.watch;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 9.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -259,6 +520,24 @@
 			buildConfigurations = (
 				AA0000000000000000000003 /* Debug */,
 				AA0000000000000000000004 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A80000000000000000000003 /* Build configuration list for PBXNativeTarget "TapBeat-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000000000000000000005 /* Debug */,
+				AA0000000000000000000006 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		A80000000000000000000004 /* Build configuration list for PBXNativeTarget "TapBeat-Watch" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				AA0000000000000000000007 /* Debug */,
+				AA0000000000000000000008 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

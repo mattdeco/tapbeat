@@ -2,11 +2,17 @@
 
 [![Release](https://img.shields.io/github/v/release/mattdeco/tapbeat)](https://github.com/mattdeco/tapbeat/releases/latest)
 
-Ultra-light macOS BPM counter. Press spacebar (or click the window) to tap tempo; Esc or R to reset.
+Ultra-light universal BPM counter for macOS, iOS, iPadOS, and watchOS. Press spacebar (or click/tap) to tap tempo; Esc, R, or reset button to reset. Includes native haptics on iPhone and Apple Watch.
 
 <img src="docs/screenshot.png" alt="TapBeat showing a tapped BPM on its LCD" width="326">
 
-## Download
+## Platforms
+
+- **macOS:** Native borderless floating HUD window with drag anywhere and Space/Esc/R keyboard shortcuts (requires macOS 13 or later).
+- **iOS & iPadOS:** Full-screen touch target with instant haptic feedback and reset action (requires iOS 16 or later).
+- **watchOS:** Wrist tap tempo with click haptics optimized for Apple Watch (requires watchOS 9 or later).
+
+## Download (macOS)
 
 Grab the latest build from [Releases](https://github.com/mattdeco/tapbeat/releases/latest):
 
@@ -37,7 +43,7 @@ xcodebuild -project TapBeat.xcodeproj -scheme TapBeat -configuration Debug -deri
 open build/Build/Products/Debug/TapBeat.app
 ```
 
-### Release
+### macOS (Release)
 
 ```bash
 xcodebuild -project TapBeat.xcodeproj -scheme TapBeat -configuration Release -derivedDataPath build
@@ -48,6 +54,18 @@ To install the Release build:
 
 ```bash
 cp -R build/Build/Products/Release/TapBeat.app /Applications/
+```
+
+### iOS / iPadOS (Simulator)
+
+```bash
+xcodebuild -project TapBeat.xcodeproj -scheme TapBeat-iOS -destination "generic/platform=iOS Simulator" -configuration Debug
+```
+
+### watchOS
+
+```bash
+xcodebuild -project TapBeat.xcodeproj -target TapBeat-Watch -sdk watchos -configuration Debug
 ```
 
 ### Publish a release

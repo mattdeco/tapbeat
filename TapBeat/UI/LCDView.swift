@@ -1,137 +1,109 @@
-import AppKit
+import SwiftUI
 
-final class LCDView: NSView {
-    var bpmText: String = "---" {
-        didSet { needsDisplay = true }
+/// Shared glowing LCD display component for TapBeat across macOS, iOS, and watchOS.
+struct LCDView: View {
+    let bpmText: String
+    let subtitle: String
+    let glowOpacity: Double
+    var compact: Bool = false
+    var onTap: (() -> Void)? = nil
+
+    private let glowColor = Color(red: 0.45, green: 0.95, blue: 0.85)
+    private let wellColor = Color(red: 0.04, green: 0.06, blue: 0.07)
+    private let rimColor = Color(white: 0.22)
+    private let gradientCenterColor = Color(red: 0.08, green: 0.12, blue: 0.12, opacity: 0.55)
+    private let brightDigitColor = Color(red: 0.75, green: 1.0, blue: 0.92)
+
+    init(
+        bpmText: String = "---",
+        subtitle: String = "SPACE TO TAP",
+        glowOpacity: Double = 0.45,
+        compact: Bool = false,
+        onTap: (() -> Void)? = nil
+    ) {
+        self.bpmText = bpmText
+        self.subtitle = subtitle
+        self.glowOpacity = glowOpacity
+        self.compact = compact
+        self.onTap = onTap
     }
 
-    var subtitle: String = "SPACE TO TAP" {
-        didSet { needsDisplay = true }
-    }
+    private var cornerRadius: CGFloat { compact ? 10 : 12 }
+    private var digitSize: CGFloat { compact ? 36 : 56 }
+    private var digitOffset: CGFloat { compact ? -3 : -6 }
+    private var subtitleSize: CGFloat { compact ? 9 : 11 }
+    private var subtitleBottomPadding: CGFloat { compact ? 8 : 16 }
+    private var shadowRadius: CGFloat { compact ? 8 : 14 }
 
-    var glowOpacity: CGFloat = 0.45 {
-        didSet { needsDisplay = true }
-    }
+    var body: some View {
+        GeometryReader { geometry in
+            ZStack {
+                // Background Well
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(wellColor)
 
-    var onTap: (() -> Void)?
+                // Inner Radial Gradient
+                let maxDim = max(geometry.size.width, geometry.size.height)
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .fill(
+                        RadialGradient(
+                            colors: [gradientCenterColor, wellColor],
+                            center: .center,
+                            startRadius: 0,
+                            endRadius: maxDim * 0.7
+                        )
+                    )
 
-    private let glowColor = NSColor(calibratedRed: 0.45, green: 0.95, blue: 0.85, alpha: 1.0)
-    private let wellColor = NSColor(calibratedRed: 0.04, green: 0.06, blue: 0.07, alpha: 1.0)
-    private let rimColor = NSColor(calibratedWhite: 0.22, alpha: 1.0)
+                // 1px Rim Stroke
+                RoundedRectangle(cornerRadius: cornerRadius, style: .continuous)
+                    .stroke(rimColor, lineWidth: 1)
 
-    private var mouseDownLocation: NSPoint?
-    private var didDrag = false
-    private let dragThreshold: CGFloat = 4
+                // Displayed Digits (layered for glow)
+                ZStack {
+                    Text(bpmText)
+                        .font(.system(size: digitSize, weight: .medium, design: .monospaced))
+                        .tracking(2.0)
+                        .foregroundColor(glowColor.opacity(glowOpacity))
+                        .shadow(color: glowColor.opacity(0.55 * glowOpacity), radius: shadowRadius)
 
-    override var isFlipped: Bool { false }
-    override var acceptsFirstResponder: Bool { true }
+                    Text(bpmText)
+                        .font(.system(size: digitSize, weight: .medium, design: .monospaced))
+                        .tracking(2.0)
+                        .foregroundColor(brightDigitColor.opacity(glowOpacity))
+                }
+                .offset(y: digitOffset)
 
-    override func draw(_ dirtyRect: NSRect) {
-        guard let context = NSGraphicsContext.current?.cgContext else { return }
-
-        let bounds = self.bounds.insetBy(dx: 0.5, dy: 0.5)
-        let wellPath = NSBezierPath(roundedRect: bounds, xRadius: 12, yRadius: 12)
-
-        wellColor.setFill()
-        wellPath.fill()
-
-        rimColor.setStroke()
-        wellPath.lineWidth = 1
-        wellPath.stroke()
-
-        context.saveGState()
-        wellPath.addClip()
-        let colors = [
-            NSColor(calibratedRed: 0.08, green: 0.12, blue: 0.12, alpha: 0.55).cgColor,
-            wellColor.cgColor
-        ]
-        if let gradient = CGGradient(
-            colorsSpace: CGColorSpaceCreateDeviceRGB(),
-            colors: colors as CFArray,
-            locations: [0, 1]
-        ) {
-            context.drawRadialGradient(
-                gradient,
-                startCenter: CGPoint(x: bounds.midX, y: bounds.midY),
-                startRadius: 0,
-                endCenter: CGPoint(x: bounds.midX, y: bounds.midY),
-                endRadius: max(bounds.width, bounds.height) * 0.7,
-                options: []
-            )
+                // Subtitle
+                VStack {
+                    Spacer()
+                    Text(subtitle)
+                        .font(.system(size: subtitleSize, weight: .regular, design: .monospaced))
+                        .tracking(1.5)
+                        .foregroundColor(glowColor.opacity(0.35 * max(glowOpacity, 0.5)))
+                        .padding(.bottom, subtitleBottomPadding)
+                }
+            }
+            .contentShape(Rectangle())
+            .onTapGesture {
+                onTap?()
+            }
         }
-        context.restoreGState()
+    }
+}
 
-        let digitFont = NSFont.monospacedDigitSystemFont(ofSize: 56, weight: .medium)
-        let subFont = NSFont.monospacedSystemFont(ofSize: 11, weight: .regular)
+/// Convenience view that automatically binds LCDView to a TempoSession instance.
+struct LCDSessionView: View {
+    @ObservedObject var session: TempoSession
+    var compact: Bool = false
+    var onTap: (() -> Void)? = nil
 
-        let bpmString = NSAttributedString(string: bpmText, attributes: [
-            .font: digitFont,
-            .foregroundColor: glowColor.withAlphaComponent(glowOpacity),
-            .kern: 2.0
-        ])
-        let bpmSize = bpmString.size()
-        let bpmOrigin = NSPoint(
-            x: bounds.midX - bpmSize.width / 2,
-            y: bounds.midY - bpmSize.height / 2 + 6
+    var body: some View {
+        LCDView(
+            bpmText: session.bpmText,
+            subtitle: session.subtitle,
+            glowOpacity: session.glowOpacity,
+            compact: compact,
+            onTap: onTap
         )
-
-        let shadow = NSShadow()
-        shadow.shadowColor = glowColor.withAlphaComponent(0.55 * glowOpacity)
-        shadow.shadowBlurRadius = 14
-        shadow.shadowOffset = .zero
-
-        NSAttributedString(string: bpmText, attributes: [
-            .font: digitFont,
-            .foregroundColor: glowColor.withAlphaComponent(glowOpacity),
-            .kern: 2.0,
-            .shadow: shadow
-        ]).draw(at: bpmOrigin)
-
-        NSAttributedString(string: bpmText, attributes: [
-            .font: digitFont,
-            .foregroundColor: NSColor(calibratedRed: 0.75, green: 1.0, blue: 0.92, alpha: glowOpacity),
-            .kern: 2.0
-        ]).draw(at: bpmOrigin)
-
-        let subString = NSAttributedString(string: subtitle, attributes: [
-            .font: subFont,
-            .foregroundColor: glowColor.withAlphaComponent(0.35 * max(glowOpacity, 0.5)),
-            .kern: 1.5
-        ])
-        let subSize = subString.size()
-        subString.draw(at: NSPoint(
-            x: bounds.midX - subSize.width / 2,
-            y: bounds.minY + 16
-        ))
-    }
-
-    override func mouseDown(with event: NSEvent) {
-        mouseDownLocation = event.locationInWindow
-        didDrag = false
-    }
-
-    override func mouseDragged(with event: NSEvent) {
-        guard let start = mouseDownLocation, let window else { return }
-        let current = event.locationInWindow
-        let dx = current.x - start.x
-        let dy = current.y - start.y
-        if !didDrag && hypot(dx, dy) < dragThreshold {
-            return
-        }
-        didDrag = true
-        var frame = window.frame
-        frame.origin.x += event.deltaX
-        frame.origin.y -= event.deltaY
-        window.setFrameOrigin(frame.origin)
-    }
-
-    override func mouseUp(with event: NSEvent) {
-        defer {
-            mouseDownLocation = nil
-            didDrag = false
-        }
-        if !didDrag, mouseDownLocation != nil {
-            onTap?()
-        }
     }
 }
